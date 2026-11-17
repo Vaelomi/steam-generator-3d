@@ -1,0 +1,150 @@
+{
+  "reviewed": "2026-11-18",
+  "checks": [
+    {
+      "name": "catalog search",
+      "pass": true,
+      "detail": {
+        "rows": 2,
+        "text": "承压边界07一次侧下封头 / 水室一次侧接口19水室分隔板"
+      }
+    },
+    {
+      "name": "hide component",
+      "pass": true
+    },
+    {
+      "name": "select reveals hidden component",
+      "pass": true
+    },
+    {
+      "name": "isolate component",
+      "pass": true
+    },
+    {
+      "name": "restore component visibility",
+      "pass": true
+    },
+    {
+      "name": "CAD wireframe and guides",
+      "pass": true
+    },
+    {
+      "name": "label visibility",
+      "pass": true
+    },
+    {
+      "name": "auto-rotation",
+      "pass": true
+    },
+    {
+      "name": "play / pause animation",
+      "pass": true
+    },
+    {
+      "name": "source dialog",
+      "pass": true
+    },
+    {
+      "name": "JSON export",
+      "pass": true
+    },
+    {
+      "name": "PNG export",
+      "pass": true,
+      "detail": {
+        "bytes": 421962,
+        "width": 1500,
+        "height": 1126
+      }
+    },
+    {
+      "name": "geometry finite / matched supports / open nozzle",
+      "pass": true,
+      "detail": {
+        "nonFinite": [],
+        "sampleTubes": 106,
+        "matchedHoleCount": 212,
+        "ownNozzleAxisHits": 0,
+        "alignedDisplacement": 0,
+        "diagnostics": {
+          "model": "CAP1400",
+          "parts": 24,
+          "sampleTubes": 106,
+          "actualTubes": 12606,
+          "displaySeparators": 29,
+          "triangles": 303830,
+          "instances": 982,
+          "cutaway": true,
+          "explosion": 1,
+          "visibleParts": 24,
+          "renderCalls": 232,
+          "geometryCount": 233,
+          "textureCount": 2
+        }
+      }
+    },
+    {
+      "name": "cutaway geometry disposal",
+      "pass": true,
+      "detail": {
+        "baseline": 221,
+        "after": 221
+      }
+    },
+    {
+      "name": "mobile layout",
+      "pass": true,
+      "detail": {
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "scene": {
+          "w": 371,
+          "h": 573
+        },
+        "panels": [
+          {
+            "class": "control-panel panel",
+            "x": 9,
+            "right": 381
+          },
+          {
+            "class": "scene panel",
+            "x": 9,
+            "right": 381
+          },
+          {
+            "class": "info-panel panel",
+            "x": 9,
+            "right": 381
+          }
+        ]
+      }
+    },
+    {
+      "name": "direct file offline startup",
+      "pass": true,
+      "detail": {
+        "protocol": "file:",
+        "ready": true,
+        "diagnostics": {
+          "model": "CAP1400",
+          "parts": 24,
+          "sampleTubes": 106,
+          "actualTubes": 12606,
+          "displaySeparators": 29,
+          "triangles": 303830,
+          "instances": 982,
+          "cutaway": true,
+          "explosion": 0.6,
+          "visibleParts": 24,
+          "renderCalls": 232,
+          "geometryCount": 213,
+          "textureCount": 2
+        },
+        "remoteResources": []
+      }
+    }
+  ],
+  "errors": []
+}

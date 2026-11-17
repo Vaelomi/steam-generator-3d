@@ -1,0 +1,366 @@
+[
+  {
+    "model": "CAP1400",
+    "ports": [
+      {
+        "id": "feed",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "startup",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "level0",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "level1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "pump-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "pump1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "hotLeg",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "residual",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown0",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "feed",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "startup",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "level0",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "level1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "pump-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "pump1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "hotLeg",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "residual",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown0",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown1",
+        "cutaway": true,
+        "openSamples": 13
+      }
+    ],
+    "tubeLegsChecked": 212,
+    "separatorEntrancesChecked": 29,
+    "cacheEntries": 20,
+    "geometryAttributesChecked": 2747259,
+    "geometryCount": 360,
+    "diagnostics": {
+      "model": "CAP1400",
+      "parts": 37,
+      "sampleTubes": 106,
+      "actualTubes": 12606,
+      "displaySeparators": 29,
+      "triangles": 733936,
+      "instances": 989,
+      "cutaway": false,
+      "explosion": 0
+    },
+    "displayEnvelopeHeight": 25.58538191405238
+  },
+  {
+    "model": "CAP1000",
+    "ports": [
+      {
+        "id": "feed",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "startup",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "level0",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "level1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "pump-1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "pump1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "hotLeg",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "residual",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown0",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown1",
+        "cutaway": false,
+        "openSamples": 13
+      },
+      {
+        "id": "feed",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "startup",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "level0",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "level1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "pump-1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "upperManway1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "channelManway1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "handhole1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "pump1",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "hotLeg",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "residual",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown0",
+        "cutaway": true,
+        "openSamples": 13
+      },
+      {
+        "id": "blowdown1",
+        "cutaway": true,
+        "openSamples": 13
+      }
+    ],
+    "tubeLegsChecked": 162,
+    "separatorEntrancesChecked": 21,
+    "cacheEntries": 20,
+    "geometryAttributesChecked": 2655867,
+    "geometryCount": 357,
+    "diagnostics": {
+      "model": "CAP1000",
+      "parts": 37,
+      "sampleTubes": 81,
+      "actualTubes": 10025,
+      "displaySeparators": 21,
+      "triangles": 629568,
+      "instances": 746,
+      "cutaway": false,
+      "explosion": 0
+    },
+    "displayEnvelopeHeight": 23.83993680476745
+  }
+]

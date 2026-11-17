@@ -1,0 +1,9 @@
+tools/server*.log
+tools/*.pid
+*.tmp
+.DS_Store
+Thumbs.db
+
+# 本地工具会话与工作区记忆，不随仓库发布
+.playwright-cli/
+.workbuddy/

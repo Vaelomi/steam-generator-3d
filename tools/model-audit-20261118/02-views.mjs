@@ -1,0 +1,11 @@
+const task = await taskSpace(26);
+const page = task.page("p1");
+await page.evaluate(() => { CAP_SG.exitInspection(); CAP_SG.setMode("section"); });
+await page.waitForFunction(() => !CAP_SG.animating);
+console.log({ section: await page.screenshot({ path: "D:/DataTop/Desktop/我的项目/主设备爆炸图/蒸汽发生器/docs/previews/audit-section-before.png" }) });
+await page.evaluate(() => CAP_SG.inspect("separation"));
+await page.waitForFunction(() => !CAP_SG.animating);
+console.log({ separation: await page.screenshot({ path: "D:/DataTop/Desktop/我的项目/主设备爆炸图/蒸汽发生器/docs/previews/audit-separation-before.png" }) });
+await page.evaluate(() => { CAP_SG.exitInspection(); CAP_SG.setMode("assembly"); });
+await page.waitForFunction(() => !CAP_SG.animating);
+console.log({ assembly: await page.screenshot({ path: "D:/DataTop/Desktop/我的项目/主设备爆炸图/蒸汽发生器/docs/previews/audit-assembly-before.png" }) });

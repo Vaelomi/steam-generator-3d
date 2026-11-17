@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark" data-appearance="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#13110e">
+  <meta name="description" content="CAP1000 / CAP1400 蒸汽发生器交互式三维结构图谱。支持结构分解、剖视、部件检视、流路示意和双型号对比。">
+  <title>蒸汽发生器 · CAP1000 / CAP1400 三维结构图谱</title>
+  <link rel="icon" href="./assets/sg-mark.svg" type="image/svg+xml">
+  <script>
+    (() => {
+      let preference = 'dark';
+      try {
+        const saved = localStorage.getItem('sg-appearance-v2');
+        if (['light', 'dark', 'auto'].includes(saved)) preference = saved;
+      } catch (_) {}
+      document.documentElement.dataset.appearance = preference;
+      document.documentElement.dataset.theme = preference === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : preference;
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/viewer.css">
+</head>
+<body>
+  <svg class="symbol-library" aria-hidden="true">
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 5v9l9 5 9-5V8M12 13v9"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 17l10 5 10-5"/></symbol>
+    <symbol id="i-cut" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 20 20 4M4 13l9-9M11 20l9-9"/><path d="M4 4v16h16" stroke-width="2"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1-.3 6M4 3v6h6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A9 9 0 0 1 9.8 3.5a9 9 0 1 0 10.7 10.7Z"/></symbol>
+    <symbol id="i-auto" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4m-4 0h8"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M8 5 6 8H3v12h18V8h-3l-2-3H8Z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v7m0-11v1"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 4h7l2 2 2-2h7v15h-7l-2 2-2-2H3V4Zm9 2v15"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+  </svg>
+
+  <header class="masthead">
+    <a class="brand" href="./index.html" aria-label="蒸汽发生器图谱首页">
+      <div class="brand-icon"><img src="./assets/logo.png" width="44" height="44" alt=""></div>
+      <div class="brand-copy"><div class="eyebrow">CAP SERIES / ENGINEERING ATLAS</div><h1>蒸汽发生器</h1><div class="brand-subtitle">CAP1000 / CAP1400 · 三维交互图谱 · 公开资料基线</div></div>
+    </a>
+    <nav class="device-nav" aria-label="当前设备"><span>蒸汽发生器</span></nav>
+    <div class="header-actions">
+      <span class="offline-status"><i></i><span id="headerMode">总装视图</span></span>
+      <div class="theme-buttons" role="group" aria-label="界面主题">
+        <button data-theme="light" title="白天模式" aria-label="白天模式" aria-pressed="false"><svg><use href="#i-sun"/></svg><span>白天</span></button>
+        <button data-theme="dark" title="夜间模式" aria-label="夜间模式" aria-pressed="true"><svg><use href="#i-moon"/></svg><span>夜间</span></button>
+        <button data-theme="auto" title="跟随系统外观" aria-label="跟随系统外观" aria-pressed="false"><svg><use href="#i-auto"/></svg><span>自动</span></button>
+      </div>
+      <button class="icon-button source-trigger" title="资料依据与模型说明" aria-label="资料依据与模型说明"><svg><use href="#i-book"/></svg></button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="control-panel panel" aria-label="场景控制">
+      <div class="panel-heading"><span class="heading-mark"></span><h2>场景控制</h2><span class="micro">SCENE</span></div>
+      <div class="modes" role="group" aria-label="视图模式">
+        <button id="assembly" data-mode="assembly" class="active" aria-pressed="true"><svg><use href="#i-cube"/></svg>总装</button>
+        <button id="exploded" data-mode="exploded" aria-pressed="false"><svg><use href="#i-layers"/></svg>爆炸</button>
+        <button id="sectionView" data-mode="section" aria-pressed="false"><svg><use href="#i-cut"/></svg>剖视</button>
+      </div>
+      <div class="control-field">
+        <label for="modelSelect">设备型号 <span>MODEL</span></label>
+        <select id="modelSelect"><option value="CAP1400">CAP1400 / 国和一号</option><option value="CAP1000">CAP1000 / 体系参考</option></select>
+      </div>
+      <div class="explode-card">
+        <div class="range-heading"><label for="explodeRange">结构分解程度</label><output id="explodeValue" for="explodeRange">0<span>%</span></output></div>
+        <input id="explodeRange" aria-label="结构分解程度" type="range" min="0" max="100" value="0" step="1">
+        <div class="range-ends"><span>总装状态</span><span>完全展开</span></div>
+        <button id="playExplosion" class="animation-button" aria-pressed="false"><svg><use href="#i-play"/></svg><span>播放分解动画</span><span class="key-hint">P</span></button>
+      </div>
+      <section class="inspection-section">
+        <div class="section-heading"><h3>局部检视</h3><span>DETAIL VIEWS</span></div>
+        <div class="inspection-grid">
+          <button data-inspect="bundle"><span class="detail-number">01</span>U 形管束<svg><use href="#i-arrow"/></svg></button>
+          <button data-inspect="separation"><span class="detail-number">02</span>汽水分离<svg><use href="#i-arrow"/></svg></button>
+          <button data-inspect="primary"><span class="detail-number">03</span>一次侧水室<svg><use href="#i-arrow"/></svg></button>
+          <button data-inspect="interfaces"><span class="detail-number">04</span>接管接口<svg><use href="#i-arrow"/></svg></button>
+        </div>
+      </section>
+      <section class="display-section">
+        <div class="section-heading"><h3>显示选项</h3><button id="showAll" class="text-button">显示全部</button></div>
+        <label class="switch-row" for="cutaway"><span><svg><use href="#i-cut"/></svg>剖开外壳</span><input id="cutaway" type="checkbox"><i class="toggle"></i></label>
+        <label class="switch-row" for="labels"><span><svg><use href="#i-info"/></svg>部件标签</span><input id="labels" type="checkbox" checked><i class="toggle"></i></label>
+        <label class="switch-row" for="flow"><span><span class="flow-glyph">⇢</span>流路示意</span><input id="flow" type="checkbox"><i class="toggle"></i></label>
+        <label class="switch-row" for="rotate"><span><svg><use href="#i-reset"/></svg>自动旋转</span><input id="rotate" type="checkbox"><i class="toggle"></i></label>
+        <details class="more-display">
+          <summary>更多显示选项 <span>+</span></summary>
+          <label class="switch-row" for="guides"><span>装配对齐引线</span><input id="guides" type="checkbox" checked><i class="toggle"></i></label>
+          <label class="switch-row" for="wireframe"><span>结构线框</span><input id="wireframe" type="checkbox"><i class="toggle"></i></label>
+          <div class="control-field compact"><label for="materialSelect">模型配色</label><select id="materialSelect"><option value="functional">功能分区配色</option><option value="cad">工业银灰</option></select></div>
+        </details>
+      </section>
+      <div class="legend">
+        <span><i style="--swatch:#a2b0b7"></i>承压壳体</span><span><i style="--swatch:#c39a51"></i>传热管束</span>
+        <span><i style="--swatch:#70a6a0"></i>汽水分离</span><span><i style="--swatch:#7896b1"></i>功能接管</span>
+      </div>
+      <button id="resetView" class="reset-button"><svg><use href="#i-reset"/></svg>重置视角<span class="key-hint">R</span></button>
+      <p class="control-footnote"><i></i>部件可点击 · 结构可检视<br><span>按组件分组展开，焊接件分离为示意。</span></p>
+    </aside>
+
+    <section id="viewport" class="scene panel" aria-label="可旋转缩放的蒸汽发生器三维场景">
+      <div class="scene-heading"><div class="eyebrow">STEAM GENERATOR <span>/</span> 3D EXPLORER</div><div class="scene-state"><i></i><b id="sceneModel">CAP1400</b><span class="state-divider">/</span><span id="sceneMode">总装视图</span><span id="cutBadge" class="cut-badge" hidden>局部剖开</span></div></div>
+      <div id="assemblyOrder" class="assembly-order" role="group" aria-label="结构分组" hidden>
+        <span class="assembly-order-title">结构分组</span>
+        <button data-assembly="bundle" title="查看管板、管束及水室封头"><span>A</span><span class="assembly-long">管束 / 水室</span><span class="assembly-short">管束</span></button>
+        <button data-assembly="lower" title="查看下筒体 C 段与锥体"><span>B</span><span class="assembly-long">下筒体 C / 锥体</span><span class="assembly-short">下筒体</span></button>
+        <button data-assembly="separation" title="查看上筒体、汽水分离器与给水环"><span>C</span><span class="assembly-long">上筒体 / 分离器</span><span class="assembly-short">上筒体</span></button>
+        <button data-assembly="dryer" title="查看蒸汽干燥器"><span>D</span><span class="assembly-long">干燥器</span><span class="assembly-short">干燥器</span></button>
+        <button data-assembly="head" title="查看上封头、出口及限流文丘里"><span>E</span><span class="assembly-long">上封头</span><span class="assembly-short">上封头</span></button>
+      </div>
+      <div class="scene-toolbar" role="group" aria-label="三维场景工具">
+        <button data-view="front" class="view-button" title="正视图" aria-label="正视图">正</button><button data-view="side" class="view-button" title="侧视图" aria-label="侧视图">侧</button><button data-view="top" class="view-button" title="俯视图" aria-label="俯视图">俯</button><span class="toolbar-divider"></span>
+        <button id="screenshot" title="保存当前视图" aria-label="保存当前视图"><svg><use href="#i-camera"/></svg></button>
+        <button id="fullscreen" title="全屏查看" aria-label="全屏查看"><svg><use href="#i-expand"/></svg></button>
+      </div>
+      <div id="inspectionBanner" class="inspection-banner" hidden><div><span>局部检视</span><b id="inspectionTitle"></b></div><button id="exitInspection">返回整机 <span>↗</span></button></div>
+      <svg id="leaders" class="leaders" aria-hidden="true"></svg>
+      <div id="labelLayer" class="label-layer"></div>
+      <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+      <div id="flowLegend" class="flow-legend" hidden><span><i class="hot"></i>一次侧：管内换热</span><span><i class="cold"></i>二次侧：给水 / 上升</span><small>原理示意 · 非热工计算</small></div>
+      <div class="scene-bottom">
+        <div class="scene-note"><span class="micro">STRUCTURAL STUDY</span><span id="sceneNote">立式 · U 形管 · 自然循环</span></div>
+        <div class="interaction-hints"><span><svg viewBox="0 0 16 20" aria-hidden="true"><rect x="2" y="1" width="12" height="18" rx="6"/><path d="M8 1v7M2 8h12"/></svg>拖动旋转</span><span>滚轮缩放</span><span>右键平移</span></div>
+      </div>
+      <svg id="axisWidget" class="axis-widget" viewBox="0 0 84 84" aria-label="三维坐标方向"></svg>
+      <div id="loading" class="loading"><div class="loader-symbol"></div><span>正在构建蒸汽发生器…</span><small>本地几何 · 无需网络</small></div>
+      <div id="sceneToast" class="scene-toast" role="status" hidden></div>
+    </section>
+
+    <aside class="info-panel panel" aria-label="设备与部件信息">
+      <div class="info-header"><div class="panel-heading"><span class="heading-mark"></span><h2>结构档案</h2><button id="clearSelection" class="text-button">整机概览 ↗</button></div><div class="info-eyebrow" id="infoKicker">CAP1400 / 国和一号</div><h2 class="part-title" id="partTitle">蒸汽发生器</h2><p class="part-english" id="partEnglish">Steam Generator · Vertical U-tube</p></div>
+      <div class="info-tabs" role="tablist" aria-label="结构档案分类">
+        <button id="tab-details" data-tab="details" role="tab" aria-controls="panel-details" aria-selected="true">结构信息</button><button id="tab-catalog" data-tab="catalog" role="tab" aria-controls="panel-catalog" aria-selected="false" tabindex="-1">部件目录 <span id="partCount">37</span></button><button id="tab-compare" data-tab="compare" role="tab" aria-controls="panel-compare" aria-selected="false" tabindex="-1">型号对比</button>
+      </div>
+      <div class="info-scroll">
+        <section id="panel-details" role="tabpanel" aria-labelledby="tab-details">
+          <div class="info-status"><span id="evidenceBadge" class="evidence-badge">公开设计资料</span><span id="partCode">SG / OVERVIEW</span></div>
+          <p class="part-description" id="partDescription"></p>
+          <div id="overviewMetrics" class="metric-grid"></div>
+          <dl id="partProperties" class="property-grid"></dl>
+          <div id="selectionActions" class="selection-actions" hidden><button id="focusPart"><svg><use href="#i-target"/></svg>聚焦部件</button><button id="isolatePart"><svg><use href="#i-eye"/></svg>单独查看</button><button id="hidePart" title="隐藏部件">隐藏</button></div>
+          <div class="structure-diagram" id="structureDiagram">
+            <div class="section-heading"><h3>结构分区导览</h3><span>点击查看</span></div>
+            <svg viewBox="0 0 280 240" role="img" aria-label="蒸汽发生器主要组成示意，点击分区可查看部件">
+              <g class="diagram-shell" fill="none"><path d="M94 39Q94 13 132 13Q170 13 170 39V89L157 111V202Q157 225 132 225Q107 225 107 202V111L94 89V39Z"/><path d="M126 13V5h12v8M94 39h76M94 89h76M107 111h50M107 200h50M132 200v25"/></g>
+              <g class="diagram-tubes" fill="none"><path d="M115 199V135Q115 116 132 116Q149 116 149 135V199M120 199V136Q120 123 132 123Q144 123 144 136V199M125 199V137Q125 130 132 130Q139 130 139 137V199"/><path d="M110 149h44m-44 14h44m-44 14h44"/></g>
+              <g class="diagram-separators" fill="none"><path d="M104 50h56v8h-56zM105 64v24h9V64zm14 0v24h9V64zm14 0v24h9V64zm14 0v24h9V64z"/></g>
+              <g class="diagram-hit" data-part="dryer" tabindex="0" role="button" aria-label="查看干燥器"><rect x="95" y="40" width="74" height="21"/><path d="M174 50h24"/><text x="204" y="53">干燥器</text><circle cx="171" cy="50" r="2"/></g>
+              <g class="diagram-hit" data-part="separators" tabindex="0" role="button" aria-label="查看汽水分离器"><rect x="95" y="62" width="74" height="30"/><path d="M174 77h24"/><text x="204" y="80">汽水分离器</text><circle cx="171" cy="77" r="2"/></g>
+              <g class="diagram-hit" data-part="tubeBundle" tabindex="0" role="button" aria-label="查看U形传热管束"><rect x="108" y="115" width="48" height="77"/><path d="M103 144H76"/><text x="6" y="148">U 形管束</text><circle cx="106" cy="144" r="2"/></g>
+              <g class="diagram-hit" data-part="tubesheet" tabindex="0" role="button" aria-label="查看管板"><rect x="105" y="193" width="55" height="12"/><path d="M161 199h37"/><text x="204" y="203">管板</text><circle cx="159" cy="199" r="2"/></g>
+              <g class="diagram-hit" data-part="channelHead" tabindex="0" role="button" aria-label="查看一次侧水室"><rect x="108" y="206" width="48" height="21"/><path d="M102 216H76"/><text x="6" y="220">一次侧水室</text><circle cx="105" cy="216" r="2"/></g>
+            </svg>
+          </div>
+          <div class="basis-note"><svg><use href="#i-info"/></svg><div><b id="basisTitle">模型与数据口径</b><p id="basisNote"></p><button class="source-trigger text-button">查看资料依据 <span>↗</span></button></div></div>
+        </section>
+        <section id="panel-catalog" role="tabpanel" aria-labelledby="tab-catalog" hidden>
+          <div class="catalog-search"><svg><use href="#i-search"/></svg><input id="partSearch" type="search" placeholder="搜索部件名称或编号…" aria-label="搜索部件名称或编号"><kbd>/</kbd></div>
+          <div class="catalog-heading"><span id="catalogSummary">主要结构组件</span><button id="catalogShowAll" class="text-button">恢复显示</button></div>
+          <div id="partList" class="part-list"></div><p id="emptySearch" class="empty-search" hidden>未找到相应部件，请尝试“管束”或“水室”。</p>
+          <div class="catalog-note"><svg><use href="#i-eye"/></svg>点名称选择部件，点右侧图标控制显隐。</div>
+        </section>
+        <section id="panel-compare" role="tabpanel" aria-labelledby="tab-compare" hidden>
+          <div class="compare-header"><span>DESIGN REFERENCE</span><h3>同源结构，不同设计</h3><p>CAP1000 暂采用 AP1000 体系参考数据；CAP1400 采用 SNPTC 公开设计值。</p></div>
+          <div class="compare-models"><button data-model="CAP1000"><span>CAP1000</span><small>AP1000 体系参考</small></button><button data-model="CAP1400" class="active"><span>CAP1400</span><small>国和一号 / 公开设计</small></button></div>
+          <table class="comparison-table"><caption class="visually-hidden">两型号采用的数据基线</caption><thead><tr><th>参数</th><th>AP1000 参考</th><th>CAP1400</th></tr></thead><tbody id="compareTable"></tbody></table>
+          <div class="comparison-callout"><span>+27.8<small>%</small></span><div>公开基线传热面积差异<small>14,666 / 11,477 − 1</small></div></div>
+          <p class="comparison-note">此表比较两套公开设计基线，不代表任一 CAP1000 建成机组的竣工参数。孔位、壁厚、支撑板层数和接口方位仍为比例示意。</p>
+          <button id="exportData" class="wide-button"><svg><use href="#i-download"/></svg>导出参数与资料说明</button>
+        </section>
+      </div>
+      <div class="info-bottom"><span><i></i>PUBLIC DESIGN REFERENCE</span><button class="source-trigger" aria-label="查看资料说明"><svg><use href="#i-arrow"/></svg></button></div>
+    </aside>
+  </main>
+
+  <footer class="page-footer"><span>主设备结构图谱 <i>/</i> STEAM GENERATOR</span><span class="footer-middle" id="footerStatus">37 个结构组件 · 参数化三维模型</span><span>结构展示示意 · 非制造图，不作为工程依据</span></footer>
+
+  <dialog id="sourcesDialog" class="sources-dialog" aria-labelledby="sourcesTitle">
+    <div class="dialog-heading"><div><div class="eyebrow">REFERENCES & MODEL NOTES</div><h2 id="sourcesTitle">资料依据与模型说明</h2></div><button id="closeSources" class="icon-button" aria-label="关闭资料说明"><svg><use href="#i-close"/></svg></button></div>
+    <div class="dialog-content">
+      <p class="dialog-intro">本图谱参照现有压力容器项目的展示风格，按蒸汽发生器的独立结构重建。公开设计参数与示意几何分别管理。</p>
+      <div class="source-item"><span class="source-index">01</span><div><span class="source-tag">CAP1400 · 主参数基线</span><h3>SNPTC · Introduction of CAP1400</h3><p>Xujia Wang，SNERDI，2015 年 10 月，第 12–13 页。采用管数、传热面积、管外径、总高、质量及上下筒体内径；参照总体剖面识别结构分区。</p><a href="https://www.aben.com.br/Arquivos/406/406.pdf" target="_blank" rel="noopener">打开公开设计介绍 ↗</a></div></div>
+      <div class="source-item"><span class="source-index">02</span><div><span class="source-tag">CAP1000 · AP1000 体系参考</span><h3>Westinghouse · AP1000 Pre-Construction Safety Report</h3><p>UKP-GW-GL-793NP，Rev. 1，2017，附录 20C，表 20C-1 与 20C.1.5.1.1。采用 AP1000 公开参数及主蒸汽出口七个限流文丘里的描述作为参考配置，未视为 CAP1000 实机确认值。</p><a href="https://westinghousenuclear.com/media/qzol2ioy/ukp-gw-gl-793np-sm_compressed.pdf" target="_blank" rel="noopener">打开西屋公开安全报告 ↗</a></div></div>
+      <div class="source-item"><span class="source-index">03</span><div><span class="source-tag">结构关系 · 一次侧接口</span><h3>CAP1400 的总体设计和技术创新</h3><p>郑明光等，Engineering，2016，2(1): 97–102。每个环路包含一台蒸汽发生器和两台主泵；本图示意下部出口接管及泵壳，不包含主泵内部组件或电机。</p><a href="https://www.engineering.org.cn/engi/CN/1159828145555694488" target="_blank" rel="noopener">打开设计方论文 ↗</a></div></div>
+      <div class="source-item"><span class="source-index">04</span><div><span class="source-tag">内部件 · 干燥器构型</span><h3>CAP1000、CAP1400 核电蒸汽发生器用干燥器波形板组件</h3><p>公开专利 CN205079214U，仅参照波形板组件的功能与形态。模型中的分离器、叶片与箱体采用简化阵列，未复制完整专利或制造图。</p><a href="https://patents.google.com/patent/CN205079214U/zh" target="_blank" rel="noopener">打开公开专利 ↗</a></div></div>
+      <div class="source-item"><span class="source-index">05</span><div><span class="source-tag">用户资料 · 组件名称与制造分组</span><h3>海阳6号 SG 专项跟踪表</h3><p>按用户提供的截图补充下筒体 AB / C 段、锥体、管束—水室封头、余排管嘴、限流器孔、阻尼器支撑垫和窄量程水位计接管等列项。截图未给出实际外形、尺寸、数量和方位；CAP1400 的对应配置仍须核对。</p></div></div>
+      <div class="source-item"><span class="source-index">06</span><div><span class="source-tag">用户资料 · 制造日报</span><h3>HY5 MB01 蒸汽发生器日报</h3><p>设备周报列有管束保持件、文丘里管、外部法兰、下支撑环、水室隔板、MIMS 安装块及泵壳；计划只用于识别名称和制造关系，不提供零件图及安装尺寸。</p></div></div>
+      <div class="source-item"><span class="source-index">07</span><div><span class="source-tag">用户资料 · 制造计划</span><h3>HY6 MB01 蒸汽发生器设备制造进度计划</h3><p>从计划任务文本核对套筒支撑销钉、保持环和保持条、文丘里管、给水肘管、水室隔板短筋与泵壳等。A 型水室列有 CVS 管嘴，不能据此推定全部设备均配置。</p></div></div>
+      <div class="model-notes"><h3>阅读本模型</h3><ul><li>U 形管按抽样阵列显示，管径适度放大以便辨认；屏幕中的管数与真实管数不同，管板和支撑板孔位与抽样管束匹配。</li><li>管板、传热管、水室、泵壳及其接管保持同组；上筒体与分离器、给水环及其接口保持同组。下筒体 C 段和锥体整体侧移用于观察，焊接件分离并不代表实际拆卸。</li><li>主蒸汽出口的七个限流文丘里采用 AP1000 公开资料作参考；CAP1400 对应数量及两型号的细部尺寸待图纸确认。</li><li>下筒体分界、保持件、泵壳、余排管嘴、阻尼器支撑垫及其他新增零件的外形、方位和尺寸均为显示示意；CVS 等 A 型接口不能直接视为通用配置。</li><li>CAP1400 的“总高”和 AP1000 的“壳体总长”口径不同，参数卡保留资料原值；屏幕包络还包含示意泵壳、法兰等附件，分段标高不是制造尺寸。</li><li>流路仅解释管内一次侧与管外二次侧的换热关系，无流量、温度、压力计算含义。分解状态下会先回到总装剖视再演示。</li></ul></div>
+    </div>
+    <div class="dialog-footer"><span>数据校核：2026.11.18 · 公开设计基线</span><button id="closeSourcesBottom">返回三维图谱</button></div>
+  </dialog>
+  <div id="globalToast" class="global-toast" role="status" hidden></div>
+  <script src="./lib/three/three.min.js"></script>
+  <script src="./lib/three/OrbitControls.js"></script>
+  <script src="./lib/three/csg.js"></script>
+  <script src="./lib/shell-cache.js"></script>
+  <script src="./lib/solid-geometry.js"></script>
+  <script src="./lib/profiles.js"></script>
+  <script src="./lib/model.js"></script>
+  <script src="./lib/viewer.js"></script>
+</body>
+</html>

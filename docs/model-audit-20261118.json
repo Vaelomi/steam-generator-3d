@@ -1,0 +1,632 @@
+[
+  {
+    "model": "CAP1400",
+    "diagnostics": {
+      "model": "CAP1400",
+      "parts": 37,
+      "sampleTubes": 106,
+      "actualTubes": 12606,
+      "displaySeparators": 29,
+      "triangles": 333587,
+      "instances": 989,
+      "cutaway": false,
+      "explosion": 0
+    },
+    "bounds": {
+      "tubeBundle": {
+        "min": [
+          -1.850000023841858,
+          3.6500000953674316,
+          -1.914122473448515
+        ],
+        "max": [
+          1.850000023841858,
+          13.53000032901764,
+          1.91499999538064
+        ]
+      },
+      "tubesheet": {
+        "min": [
+          -2.6524999141693115,
+          2.8,
+          -2.6524999141693115
+        ],
+        "max": [
+          2.6524999141693115,
+          3.6500000238418577,
+          2.6524999141693115
+        ]
+      },
+      "channelHead": {
+        "min": [
+          -2.4725000858306885,
+          0.27000001072883606,
+          -2.4725000858306885
+        ],
+        "max": [
+          2.4725000858306885,
+          2.799999952316284,
+          2.4725000858306885
+        ]
+      },
+      "pumpCasings": {
+        "min": [
+          1.5689083280990381,
+          -0.7437580898004812,
+          -3.261475379782214
+        ],
+        "max": [
+          2.928908342404153,
+          0.5862418935102183,
+          3.261475379782214
+        ]
+      },
+      "separators": {
+        "min": [
+          -2.792227655649185,
+          16.00000023841858,
+          -2.800000011920929
+        ],
+        "max": [
+          2.792227655649185,
+          20.53232713570893,
+          2.800000011920929
+        ]
+      }
+    },
+    "tubeToSheet": {
+      "sheetBottom": 2.8,
+      "sheetTop": 3.65,
+      "tubeBottom": 3.6500000953674316,
+      "unmodelledPenetration": 0.8500000953674318
+    },
+    "shellCenterlineHits": {
+      "hotLeg": [],
+      "pumpOutlet": [],
+      "channelManway": [
+        {
+          "distance": 1.62096,
+          "axisCoordinate": 0.37904,
+          "point": [
+            -1.09169,
+            1.8,
+            1.9907
+          ]
+        },
+        {
+          "distance": 1.79763,
+          "axisCoordinate": 0.20237,
+          "point": [
+            -1.03849,
+            1.8,
+            1.82223
+          ]
+        }
+      ],
+      "blowdown": [
+        {
+          "distance": 1.8878,
+          "axisCoordinate": 0.1122,
+          "point": [
+            -2.4397,
+            3.92,
+            -0.4
+          ]
+        },
+        {
+          "distance": 2.03507,
+          "axisCoordinate": -0.03507,
+          "point": [
+            -2.29243,
+            3.92,
+            -0.4
+          ]
+        }
+      ],
+      "handhole": [
+        {
+          "distance": 1.835,
+          "axisCoordinate": 0.165,
+          "point": [
+            -2.4725,
+            4.25,
+            0
+          ]
+        },
+        {
+          "distance": 1.98,
+          "axisCoordinate": 0.02,
+          "point": [
+            -2.3275,
+            4.25,
+            0
+          ]
+        }
+      ],
+      "feedwater": [
+        {
+          "distance": 1.65696,
+          "axisCoordinate": 0.34304,
+          "point": [
+            3.20304,
+            15.76,
+            0.1
+          ]
+        },
+        {
+          "distance": 1.80196,
+          "axisCoordinate": 0.19804,
+          "point": [
+            3.05804,
+            15.76,
+            0.1
+          ]
+        }
+      ],
+      "startupFeed": [
+        {
+          "distance": 1.81207,
+          "axisCoordinate": 0.18793,
+          "point": [
+            3.14793,
+            16.63,
+            -0.6
+          ]
+        },
+        {
+          "distance": 1.95946,
+          "axisCoordinate": 0.04054,
+          "point": [
+            3.00054,
+            16.63,
+            -0.6
+          ]
+        }
+      ],
+      "secondaryManway": [
+        {
+          "distance": 1.755,
+          "axisCoordinate": 0.245,
+          "point": [
+            0,
+            18.13,
+            3.205
+          ]
+        },
+        {
+          "distance": 1.9,
+          "axisCoordinate": 0.1,
+          "point": [
+            0,
+            18.13,
+            3.06
+          ]
+        }
+      ],
+      "levelLower": [
+        {
+          "distance": 1.73553,
+          "axisCoordinate": 0.26447,
+          "point": [
+            -3.20422,
+            16.93,
+            -0.0397
+          ]
+        },
+        {
+          "distance": 1.88051,
+          "axisCoordinate": 0.11949,
+          "point": [
+            -3.05926,
+            16.93,
+            -0.0379
+          ]
+        }
+      ]
+    },
+    "feedwaterSupportRingHits": [
+      {
+        "distance": 1.53696,
+        "axisCoordinate": 0.46304,
+        "point": [
+          3.32304,
+          15.76,
+          0.1
+        ]
+      },
+      {
+        "distance": 1.93196,
+        "axisCoordinate": 0.06804,
+        "point": [
+          2.92804,
+          15.76,
+          0.1
+        ]
+      }
+    ],
+    "separatorBottomCenterlineHits": [
+      {
+        "distance": 0.87,
+        "axisCoordinate": -0.37,
+        "point": [
+          0,
+          16.07,
+          0
+        ]
+      },
+      {
+        "distance": 0.99,
+        "axisCoordinate": -0.49,
+        "point": [
+          0,
+          16.19,
+          0
+        ]
+      }
+    ],
+    "venturiBypassRadialGap": 0.030000000000000027,
+    "secondaryDowncomer": {
+      "gap": 0.075,
+      "wrapperWall": 0.045
+    },
+    "tubeSupportWrapperInterference": 0.015000000000000124,
+    "dividerToTubesheetGap": 0.020000028610229315,
+    "assembledHeight": 24.743758092184663,
+    "publicHeight": 24,
+    "primaryTubeBoreHits": [
+      {
+        "distance": 0.9500000953674319,
+        "y": 3.6500000953674316
+      }
+    ],
+    "pumpConnectionCenterlineHits": [
+      {
+        "distance": 0.3625615977627648,
+        "point": [
+          1.8350934833879227,
+          0.2994690758592055,
+          2.0940934359902204
+        ]
+      },
+      {
+        "distance": 1.8345343779555754,
+        "point": [
+          2.5822793501017887,
+          -0.6137580945688528,
+          2.97411234567544
+        ]
+      },
+      {
+        "distance": 1.8463093061318128,
+        "point": [
+          2.5882564035047078,
+          -0.6210633820613094,
+          2.981151986349989
+        ]
+      },
+      {
+        "distance": 1.8535316198495688,
+        "point": [
+          2.5919225111987467,
+          -0.6255441803540238,
+          2.9854698465229683
+        ]
+      }
+    ]
+  },
+  {
+    "model": "CAP1000",
+    "diagnostics": {
+      "model": "CAP1000",
+      "parts": 37,
+      "sampleTubes": 81,
+      "actualTubes": 10025,
+      "displaySeparators": 21,
+      "triangles": 293007,
+      "instances": 746,
+      "cutaway": false,
+      "explosion": 0
+    },
+    "bounds": {
+      "tubeBundle": {
+        "min": [
+          -1.6150000095367432,
+          3.391400098800659,
+          -1.6791224591434002
+        ],
+        "max": [
+          1.6150000095367432,
+          12.524999856948853,
+          1.6799999810755253
+        ]
+      },
+      "tubesheet": {
+        "min": [
+          -2.4100000858306885,
+          2.6,
+          -2.4100000858306885
+        ],
+        "max": [
+          2.4100000858306885,
+          3.3914000153541566,
+          2.4100000858306885
+        ]
+      },
+      "channelHead": {
+        "min": [
+          -2.2300000190734863,
+          0.27000001072883606,
+          -2.2300000190734863
+        ],
+        "max": [
+          2.2300000190734863,
+          2.5999999046325684,
+          2.2300000190734863
+        ]
+      },
+      "pumpCasings": {
+        "min": [
+          1.4121425131705276,
+          -0.5573822629390398,
+          -2.9354678239225995
+        ],
+        "max": [
+          2.636142490282344,
+          0.6396177041591963,
+          2.9354678239225995
+        ]
+      },
+      "separators": {
+        "min": [
+          -1.992004930973053,
+          14.830000162124634,
+          -1.9990000426769257
+        ],
+        "max": [
+          1.992004930973053,
+          19.259999990463257,
+          1.9990000426769257
+        ]
+      }
+    },
+    "tubeToSheet": {
+      "sheetBottom": 2.6,
+      "sheetTop": 3.3914,
+      "tubeBottom": 3.391400098800659,
+      "unmodelledPenetration": 0.7914000988006591
+    },
+    "shellCenterlineHits": {
+      "hotLeg": [],
+      "pumpOutlet": [],
+      "channelManway": [
+        {
+          "distance": 1.60752,
+          "axisCoordinate": 0.39248,
+          "point": [
+            -0.99809,
+            1.8,
+            1.84076
+          ]
+        },
+        {
+          "distance": 1.76622,
+          "axisCoordinate": 0.23378,
+          "point": [
+            -0.9503,
+            1.8,
+            1.68943
+          ]
+        }
+      ],
+      "blowdown": [
+        {
+          "distance": 1.90159,
+          "axisCoordinate": 0.09841,
+          "point": [
+            -2.19341,
+            3.6614,
+            -0.4
+          ]
+        },
+        {
+          "distance": 2.0387,
+          "axisCoordinate": -0.0387,
+          "point": [
+            -2.0563,
+            3.6614,
+            -0.4
+          ]
+        }
+      ],
+      "handhole": [
+        {
+          "distance": 1.845,
+          "axisCoordinate": 0.155,
+          "point": [
+            -2.23,
+            3.9914,
+            0
+          ]
+        },
+        {
+          "distance": 1.98,
+          "axisCoordinate": 0.02,
+          "point": [
+            -2.095,
+            3.9914,
+            0
+          ]
+        }
+      ],
+      "feedwater": [
+        {
+          "distance": 1.66696,
+          "axisCoordinate": 0.33304,
+          "point": [
+            2.79804,
+            14.53,
+            0.1
+          ]
+        },
+        {
+          "distance": 1.80196,
+          "axisCoordinate": 0.19804,
+          "point": [
+            2.66304,
+            14.53,
+            0.1
+          ]
+        }
+      ],
+      "startupFeed": [
+        {
+          "distance": 1.83059,
+          "axisCoordinate": 0.16941,
+          "point": [
+            2.73441,
+            15.4,
+            -0.6
+          ]
+        },
+        {
+          "distance": 1.96878,
+          "axisCoordinate": 0.03122,
+          "point": [
+            2.59622,
+            15.4,
+            -0.6
+          ]
+        }
+      ],
+      "secondaryManway": [
+        {
+          "distance": 1.765,
+          "axisCoordinate": 0.235,
+          "point": [
+            0,
+            16.9,
+            2.8
+          ]
+        },
+        {
+          "distance": 1.9,
+          "axisCoordinate": 0.1,
+          "point": [
+            0,
+            16.9,
+            2.665
+          ]
+        }
+      ],
+      "levelLower": [
+        {
+          "distance": 1.74547,
+          "axisCoordinate": 0.25453,
+          "point": [
+            -2.79932,
+            15.7,
+            -0.03468
+          ]
+        },
+        {
+          "distance": 1.88044,
+          "axisCoordinate": 0.11956,
+          "point": [
+            -2.66435,
+            15.7,
+            -0.03301
+          ]
+        }
+      ]
+    },
+    "feedwaterSupportRingHits": [
+      {
+        "distance": 1.54696,
+        "axisCoordinate": 0.45304,
+        "point": [
+          2.91804,
+          14.53,
+          0.1
+        ]
+      },
+      {
+        "distance": 1.93198,
+        "axisCoordinate": 0.06802,
+        "point": [
+          2.53302,
+          14.53,
+          0.1
+        ]
+      }
+    ],
+    "separatorBottomCenterlineHits": [
+      {
+        "distance": 0.87,
+        "axisCoordinate": -0.37,
+        "point": [
+          0,
+          14.9,
+          0
+        ]
+      },
+      {
+        "distance": 0.99,
+        "axisCoordinate": -0.49,
+        "point": [
+          0,
+          15.02,
+          0
+        ]
+      }
+    ],
+    "venturiBypassRadialGap": 0.027000000000000024,
+    "secondaryDowncomer": {
+      "gap": 0.075,
+      "wrapperWall": 0.045
+    },
+    "tubeSupportWrapperInterference": 0.015000000000000124,
+    "dividerToTubesheetGap": 0.0200000762939454,
+    "assembledHeight": 23.007382253402294,
+    "publicHeight": 22.45,
+    "primaryTubeBoreHits": [
+      {
+        "distance": 0.8914000988006592,
+        "y": 3.391400098800659
+      }
+    ],
+    "pumpConnectionCenterlineHits": [
+      {
+        "distance": 0.36630545328612013,
+        "point": [
+          1.6517091428153534,
+          0.38152215878123474,
+          1.884824101538083
+        ]
+      },
+      {
+        "distance": 1.691080930552724,
+        "point": [
+          2.324176410214866,
+          -0.4403822791515031,
+          2.6768411053641756
+        ]
+      },
+      {
+        "distance": 1.7016784022006495,
+        "point": [
+          2.3295557766982555,
+          -0.446957060408979,
+          2.6831768036668344
+        ]
+      },
+      {
+        "distance": 1.7081784354369889,
+        "point": [
+          2.3328552486944205,
+          -0.45098974840429173,
+          2.6870628484623174
+        ]
+      }
+    ]
+  }
+]
