@@ -4,6 +4,8 @@
 
 双击 `index.html` 或 `启动蒸汽发生器.bat` 即可打开，运行不需要网络、安装依赖或构建。请保留 `assets/` 和 `lib/` 文件夹。需要支持 WebGL 的现代浏览器。
 
+**在线演示**：<https://vaelomi.github.io/steam-generator-3d/> （GitHub Pages 静态部署，与本地版同一套文件）
+
 这是结构展示示意，不是制造图、施工图或安装规程。焊接件分离仅帮助识别结构关系。
 
 ## 已实现
